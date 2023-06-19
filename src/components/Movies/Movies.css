@@ -1,0 +1,20 @@
+.movies {
+  font-family: 'Inter';
+  font-style: normal;
+  background-color: #FAFAFA;
+  padding: 70px 30px 80px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .movies {
+    padding: 80px 30px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .movies {
+    padding: 80px 10px;
+  }
+}

@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: calc(1280px - 70px * 2);
+  padding: 18px 30px;
+  margin: 0 auto;
+  background-color: #FAFAFA;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 15px 30px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
+
+.header_landing {
+  background-color: #DDDEE3;
+}
+
+.header__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.header__logo-link {
+  width: fit-content;
+}
