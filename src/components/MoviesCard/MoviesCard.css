@@ -83,7 +83,7 @@
 }
 
 .card__save-button:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .card__save-button_saved {
@@ -144,8 +144,9 @@
   background: url('../../images/unsafe-btn-icon.svg') no-repeat center / 21px;
   transition: opacity .25s ease-in;
   cursor: pointer;
+  transition: opacity 0.15s ease-in;
 }
 
 .card__unsave-button:hover {
-  opacity: 1;
+  opacity: 0.8;
 }

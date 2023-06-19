@@ -20,10 +20,18 @@
 
 .search-form__button {
   margin-left: 46px;
+  padding: 0;
   border: none;
   width: 34px;
   height: 34px;
   background: url('../../../images/search-button.svg') no-repeat center / contain;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+  cursor: pointer;
+}
+
+.search-form__button:hover {
+  opacity: 0.8;
 }
 
 .search-form__checkbox-container {
@@ -65,6 +73,7 @@
   border: none;
   background-color: transparent;
   min-height: 34px;
+  outline: none;
 }
 
 .search-form__input::placeholder {

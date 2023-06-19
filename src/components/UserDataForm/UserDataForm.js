@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useValidationAndForm } from "../../hooks/useValidationAndForm";
 import './UserDataForm.css';
 
-export default function UserDataForm({ buttonText, helpText, linkText, isRegister }) {
+export default function UserDataForm({ buttonText, helpText, linkText, isRegister, linkPath }) {
   const { values, handleChange, errors, isValid } = useValidationAndForm();
   return (
     <form className="form" onSubmit={(e) => { e.preventDefault() }}>
@@ -58,8 +58,14 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
         </span>
       </div>
 
-      <button className={isRegister ? "form__button form__button_register" : "form__button"} aria-label={buttonText} type="submit">{buttonText}</button>
-      <p className="form__text">{helpText}<Link className="form__link" to="/signup">{linkText}</Link></p>
+      <button
+        className={isRegister ? "form__button form__button_register" : "form__button"}
+        aria-label={buttonText}
+        type="submit">{buttonText}
+      </button>
+      <p className="form__text">{helpText}
+        <Link className="form__link" to={linkPath}>{linkText}</Link>
+      </p>
     </form>
   )
 }

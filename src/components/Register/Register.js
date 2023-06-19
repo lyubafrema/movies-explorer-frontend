@@ -16,6 +16,7 @@ export default function Register() {
         helpText="Уже зарегистрированы?"
         linkText="Войти"
         isRegister={true}
+        linkPath="/signin"
       />
     </section>
   )

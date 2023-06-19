@@ -16,6 +16,12 @@
   min-height: 45px;
   margin: 179px 0 16px;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.form__button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 320px) {
@@ -91,6 +97,12 @@
   text-decoration: none;
   color: #3456F3;
   padding-left: 6px;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.form__link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 320px) {
