@@ -1,27 +1,30 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: calc(1280px - 70px * 2);
-  padding: 18px 30px;
-  margin: 0 auto;
   background-color: #FAFAFA;
 }
 
+.header_landing {
+  background-color: #DDDEE3;
+}
+
+.header__container {
+  margin: 0 auto;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+}
+
 @media screen and (max-width: 768px) {
-  .header {
+  .header__container {
     padding: 15px 30px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .header {
+  .header__container {
     padding: 18px 14px;
   }
-}
-
-.header_landing {
-  background-color: #DDDEE3;
 }
 
 .header__logo {
