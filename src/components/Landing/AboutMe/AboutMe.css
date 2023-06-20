@@ -1,16 +1,22 @@
 .student {
   background-color: #FAFAFA;
+}
+
+.student__wrap {
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 110px 70px 125px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
-  .student {
+  .student__wrap {
     padding: 90px 50px;
   }
 }
 
-@media screen and (max-width: 320px) {
-  .student {
+@media screen and (max-width: 371px) {
+  .student__wrap {
     padding: 70px 14px;
   }
 }
@@ -31,9 +37,8 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 371px) {
   .student__about {
-    order: 3;
     font-size: 11px;
     line-height: 16px;
     padding-bottom: 40px;
@@ -53,9 +58,14 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
   .student__container {
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__container {
     padding: 60px 0 70px;
   }
 }
@@ -72,7 +82,13 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
+  .student__image {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 371px) {
   .student__image {
     order: 1;
     max-width: 100%;
@@ -97,12 +113,6 @@
   }
 }
 
-@media screen and (max-width: 320px) {
-  .student__info {
-    order: 2;
-  }
-}
-
 .student__link {
   text-decoration: none;
   color:#000000;
@@ -116,12 +126,6 @@
 
 .student__link:hover {
   opacity: 0.7;
-}
-
-@media screen and (max-width: 320px) {
-  .student__link {
-    order: 4;
-  }
 }
 
 .student__main-info {
@@ -138,7 +142,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
   .student__main-info {
     order: 2;
   }
@@ -161,9 +165,8 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 371px) {
   .student__name {
-    order: 1;
     font-size: 30px;
     line-height: 36px;
     padding-bottom: 20px;
@@ -184,24 +187,24 @@
   }
 }
 
-.student__portfolio_item {
+.student__portfolio-item {
   list-style: none;
   padding: 0;
 }
 
-.student__portfolio_item:not(:last-of-type) {
+.student__portfolio-item:not(:last-of-type) {
   border-bottom: 1px solid #E8E8E8;
 }
 
-.student__portfolio_item:not(:first-of-type) {
+.student__portfolio-item:not(:first-of-type) {
   padding-top: 20px;
 }
 
-.student__portfolio_item:not(:last-of-type) {
+.student__portfolio-item:not(:last-of-type) {
   padding-bottom: 19px;
 }
 
-.student__portfolio_link {
+.student__portfolio-item_part_link {
   color: #000000;
   text-decoration: none;
   font-weight: 400;
@@ -214,34 +217,34 @@
   transition: opacity 0.15s ease-in;
 }
 
-.student__portfolio_link:hover {
+.student__portfolio-item_part_link:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 768px) {
-  .student__portfolio_link {
+  .student__portfolio-item_part_link {
     font-size: 28px;
   }
 }
 
-@media screen and (max-width: 320px) {
-  .student__portfolio_link {
+@media screen and (max-width: 520px) {
+  .student__portfolio-item_part_link {
     font-size: 18px;
     line-height: 28px;
   }
 }
 
-.student__portfolio_link-text {
+.student__portfolio-item_part_text {
   margin: 0;
 }
 
-.student__portfolio_list {
+.student__portfolio-list {
   margin: 0;
   padding: 50px 0 0;
 }
 
 @media screen and (max-width: 320px) {
-  .student__portfolio_list {
+  .student__portfolio-list {
     padding: 40px 0 0;
   }
 }
@@ -256,7 +259,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 371px) {
   .student__title {
     padding-bottom: 28px;
     font-size: 18px;

@@ -6,7 +6,7 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
   const { values, handleChange, errors, isValid } = useValidationAndForm();
   return (
     <form className="form" onSubmit={(e) => { e.preventDefault() }}>
-      <div className={isRegister ? "form__container" : "form__container_hide"}>
+      <div className={isRegister ? "form__container" : "form__container_show_not"}>
         <label className="form__label" htmlFor="name-input">Имя</label>
         <input
           className="form__input"
@@ -14,6 +14,7 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
           onChange={handleChange}
           id="name-input"
           name="name"
+          placeholder="Введите имя"
           value={values.name || ''}
           minLength="2"
           maxLength="40"
@@ -31,6 +32,7 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
           onChange={handleChange}
           id="email-input"
           name="email"
+          placeholder="Введите email"
           value={values.email || ''}
           minLength="2"
           maxLength="40"
@@ -48,6 +50,7 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
           onChange={handleChange}
           id="password-input"
           name="password"
+          placeholder="Введите пароль"
           value={values.password || ''}
           minLength="6"
           maxLength="200"
@@ -59,7 +62,7 @@ export default function UserDataForm({ buttonText, helpText, linkText, isRegiste
       </div>
 
       <button
-        className={isRegister ? "form__button form__button_register" : "form__button"}
+        className={isRegister ? "form__button form__button_place_register" : "form__button"}
         aria-label={buttonText}
         type="submit">{buttonText}
       </button>

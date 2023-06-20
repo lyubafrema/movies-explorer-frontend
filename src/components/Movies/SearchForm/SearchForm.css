@@ -1,6 +1,5 @@
 .search-form {
   background-color: #FAFAFA;
-  max-width: calc(1280px - 70px * 2);
   padding-bottom: 40px;
   box-sizing: border-box;
   margin: 0 auto;
@@ -8,13 +7,13 @@
 
 @media screen and (max-width: 890px) {
   .search-form {
-    padding-bottom: 70px;
+    padding-bottom: 60px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .search-form {
-    padding: 0 4px 90px;
+    padding: 0 4px 50px;
   }
 }
 
@@ -74,6 +73,11 @@
   background-color: transparent;
   min-height: 34px;
   outline: none;
+  border-radius: 8px;
+}
+
+.search-form__input:focus {
+  outline: 1px solid #3456F3;
 }
 
 .search-form__input::placeholder {

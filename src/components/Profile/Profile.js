@@ -39,7 +39,7 @@ export default function Profile() {
           />
         </div>
         <button className="profile__navigation-btn" type="submit" aria-label="Редактировать">Редактировать</button>
-        <button className="profile__navigation-btn profile__navigation-btn_red" aria-label="Выйти">Выйти из аккаунта</button>
+        <button className="profile__navigation-btn profile__navigation-btn_color_red" aria-label="Выйти">Выйти из аккаунта</button>
       </form>
     </section>
   )

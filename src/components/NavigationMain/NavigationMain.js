@@ -10,18 +10,18 @@ export default function NavigationMain() {
 
   return (
     <div className='navigation'>
-      <button className='navigation__burger' onClick={() => setIsMenuShow((prev) => !prev)}>
+      <button className='navigation__burger' type='type' onClick={() => setIsMenuShow((prev) => !prev)}>
         {isMenuShow ?
-          <img className='navigation__burger_icon navigation__burger_icon-close' src={burgerOpen} alt="Крестик." />
+          <img className='navigation__burger-icon navigation__burger-icon_closed' src={burgerOpen} alt="Крестик." />
           :
-          <img className='navigation__burger_icon' src={burgerClose} alt="Три горизонтальные полоски." />
+          <img className='navigation__burger-icon' src={burgerClose} alt="Три горизонтальные полоски." />
         }
       </button>
       {isMenuShow && <NavigationContextMenu />}
-      <nav className='navigation__link-container navigation__link-container_main'>
-        <NavLink to='/movies' className={({ isActive }) => `navigation__link navigation__link_main ${isActive ? 'navigation__link_main-active' : ''}`} >Фильмы</NavLink>
-        <NavLink to='/saved-movies' className={({ isActive }) => `navigation__link navigation__link_main ${isActive ? 'navigation__link_main-active' : ''}`}>Сохранённые фильмы</NavLink>
-        <Link to='/profile' className='navigation__link navigation__link_white'>Аккаунт</Link>
+      <nav className='navigation__link-container navigation__link-container_path_main'>
+        <NavLink to='/movies' className={({ isActive }) => `navigation__link navigation__link_path_main ${isActive ? 'navigation__link_active' : ''}`} >Фильмы</NavLink>
+        <NavLink to='/saved-movies' className={({ isActive }) => `navigation__link navigation__link_path_main ${isActive ? 'navigation__link_active' : ''}`}>Сохранённые фильмы</NavLink>
+        <Link to='/profile' className='navigation__link navigation__link_color_white'>Аккаунт</Link>
       </nav>
     </div>
   )

@@ -1,5 +1,12 @@
 .cards-list {
   background-color: #FAFAFA;
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 1200px) {
+  .cards-list {
+  padding-top: 40px;
+  }
 }
 
 .cards-list__container {

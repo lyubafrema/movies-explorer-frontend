@@ -32,12 +32,12 @@
   }
 }
 
-.form__button_register {
+.form__button_place_register {
   margin: 69px 0 16px;
 }
 
 @media screen and (max-width: 320px) {
-  .form__button_register {
+  .form__button_place_register {
     margin: 157px 0 14px;
   }
 }
@@ -48,7 +48,7 @@
   gap: 10px;
 }
 
-.form__container_hide {
+.form__container_show_not {
   display: none;
 }
 
@@ -59,10 +59,15 @@
   border-radius: 8px;
   padding: 15px;
   box-sizing: border-box;
+  outline: none;
+}
+
+.form__input:focus {
+  outline: 1px solid #3456F3;
 }
 
 .form__input::placeholder {
-  color: #000000;
+  color: #A0A0A0;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;

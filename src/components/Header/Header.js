@@ -8,8 +8,8 @@ export default function Header() {
   const location = useLocation();
   const isLanding = location.pathname === '/';
   return (
-    <header className={`header ${isLanding ? "header_landing" : ""}`}>
-      <div className="header__container">
+    <header className={`header ${isLanding ? "header_path_main" : ""}`}>
+      <div className="header__wrap">
         <Link className="header__logo-link" to="/" >
           <img className="header__logo" src={headerLogo} alt="Логотип: Синий квадрат с улыбкой." />
         </Link>

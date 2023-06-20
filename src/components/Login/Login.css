@@ -13,7 +13,14 @@
 
 @media screen and (max-width: 320px) {
   .login {
-    padding: 56px 30px 30px;
+    padding: 56px 0 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login__wrap {
+    padding: 0 30px;
+    box-sizing: border-box;
   }
 }
 

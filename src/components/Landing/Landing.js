@@ -3,14 +3,14 @@ import AboutProject from "./AboutProject/AboutProject";
 import Promo from "./Promo/Promo";
 import Techs from "./Techs/Techs";
 
-export default function Main() {
+export default function Landing() {
   return (
-    <main className="main">
+    <div className="main">
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
-    </main>
+    </div>
 
   )
 }

@@ -4,8 +4,10 @@ import SearchForm from "./SearchForm/SearchForm";
 export default function Movies() {
   return (
     <section className="movies">
-      <SearchForm />
-      <MoviesCardList />
+      <div className="movies__wrap">
+        <SearchForm />
+        <MoviesCardList />
+      </div>
     </section>
   )
 }

@@ -10,7 +10,8 @@
 
 .context-menu__container {
   height: 100%;
-  width: 520px;
+  max-width: 520px;
+  width: 68%;
   position: fixed;
   right: 0;
   top: 0;
@@ -19,11 +20,11 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 159px 90px 90px;
+  padding: 159px 0 90px;
   background-color: #FAFAFA;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 371px) {
   .context-menu__container {
     width: 100%;
     padding: 144px 10px 46px;
@@ -35,4 +36,44 @@
   flex-direction: column;
   align-items: center;
   gap: 28px;
+}
+
+.context-menu__link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.context-menu__link:hover {
+  opacity: 0.7;
+}
+
+.context-menu__link_active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .context-menu__link_active  {
+    border-bottom: 2px solid #000000;
+  }
+}
+
+.context-menu__link_color_white {
+  border: 2px solid rgba(170, 170, 170, 0.2);
+  border-radius: 50px;
+  width: 100px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  background: url(../../../images/header-icon.svg) no-repeat left / 12px 14px;
+  background-position: left 12px bottom 9px;
 }

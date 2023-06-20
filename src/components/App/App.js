@@ -1,6 +1,6 @@
 import Header from '../Header/Header';
 import Login from '../Login/Login';
-import Main from '../Main/Main';
+import Landing from '../Landing/Landing';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
@@ -19,15 +19,17 @@ function App() {
       {location.pathname === "/movies" && <Header />}
       {location.pathname === "/saved-movies" && <Header />}
       {location.pathname === "/profile" && <Header />}
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main className='main'>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       {location.pathname === "/" && <Footer />}
       {location.pathname === "/movies" && <Footer />}
       {location.pathname === "/saved-movies" && <Footer />}

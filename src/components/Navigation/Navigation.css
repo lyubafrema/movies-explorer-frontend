@@ -5,11 +5,6 @@
   color: #000000;
 }
 
-.navigation__link_blue-button {
-  background-color: #3456F3;
-  color: #FFFFFF;
-}
-
 .navigation__link-container {
   display: flex;
   align-items: center;
@@ -17,7 +12,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .navigation__link-container_main {
+  .navigation__link-container_path_main {
     display: none;
   }
 }
@@ -36,7 +31,7 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .navigation__link {
     font-size: 10px;
   }
@@ -52,7 +47,7 @@
   }
 }
 
-.navigation__link_blue {
+.navigation__link_color_blue {
   width: 76px;
   height: 32px;
   background-color: #3456F3;
@@ -65,39 +60,39 @@
   transition: opacity 0.15s ease-in;
 }
 
-.navigation__link_blue:hover {
+.navigation__link_color_blue:hover {
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
-  .navigation__link_blue {
+@media screen and (max-width: 360px) {
+  .navigation__link_color_blue {
     width: 54px;
     height: 26px;
   }
 }
 
-.navigation__link_context {
+.navigation__link_path_context {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
 }
 
-.navigation__link_main {
+.navigation__link_path_main {
   font-size: 14px;
   font-weight: 400;
 }
 
-.navigation__link_main-active {
+.navigation__link_active {
   font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
-  .navigation__link_main-active  {
+  .navigation__link_active  {
     border-bottom: 2px solid #000000;
   }
 }
 
-.navigation__link_white {
+.navigation__link_color_white {
   border: 2px solid rgba(170, 170, 170, 0.2);
   border-radius: 50px;
   width: 100px;
@@ -120,6 +115,12 @@
   padding: 0;
   position: relative;
   z-index: 2;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.navigation__burger:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 768px) {
@@ -135,19 +136,19 @@
   }
 }
 
-.navigation__burger_icon {
+.navigation__burger-icon{
   width: 44px;
   height: 44px;
 }
 
 @media screen and (max-width: 360px) {
-  .navigation__burger_icon {
+  .navigation__burger-icon{
     width: 38px;
     height: 38px;
   }
 }
 
-.navigation__burger_icon-close {
+.navigation__burger-icon_closed {
   width: 32px;
   height: 32px;
 }

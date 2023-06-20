@@ -68,7 +68,7 @@
 }
 
 .profile__input {
-  width: 50%;
+  width: 80%;
   border: none;
   font-weight: 400;
   font-size: 11px;
@@ -77,6 +77,11 @@
   color: #000000;
   background-color: transparent;
   outline: none;
+  border-radius: 5px;
+}
+
+.profile__input:focus {
+  outline: 1px solid #3456F3;
 }
 
 .profile__input::placeholder {
@@ -137,7 +142,7 @@
   }
 }
 
-.profile__navigation-btn_red {
+.profile__navigation-btn_color_red {
   color: #EE3465;
 }
 

@@ -9,10 +9,10 @@
 
 @import url('./components/NavigationMain/ContextMenu/ContextMenu.css');
 
-@import url('./components/Main/Promo/Promo.css');
-@import url('./components/Main/AboutProject/AboutProject.css');
-@import url('./components/Main/Techs/Techs.css');
-@import url('./components/Main/AboutMe/AboutMe.css');
+@import url('./components/Landing/Promo/Promo.css');
+@import url('./components/Landing/AboutProject/AboutProject.css');
+@import url('./components/Landing/Techs/Techs.css');
+@import url('./components/Landing/AboutMe/AboutMe.css');
 
 @import url('./components/Profile/Profile.css');
 

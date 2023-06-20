@@ -4,8 +4,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 export default function SavedMovies() {
   return (
     <section className="movies">
-      <SearchForm />
-      <MoviesCardList />
+      <div className="movies__wrap">
+        <SearchForm />
+        <MoviesCardList />
+      </div>
     </section>
   )
 }
