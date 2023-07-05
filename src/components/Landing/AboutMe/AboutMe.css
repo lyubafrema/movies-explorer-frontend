@@ -1,0 +1,268 @@
+.student {
+  background-color: #FAFAFA;
+}
+
+.student__wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 110px 70px 125px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .student__wrap {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__wrap {
+    padding: 70px 14px;
+  }
+}
+
+.student__about {
+  margin: 0;
+  padding-bottom: 99px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .student__about {
+    font-size: 12px;
+    line-height: 18px;
+    padding-bottom: 87px;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__about {
+    font-size: 11px;
+    line-height: 16px;
+    padding-bottom: 40px;
+  }
+}
+
+.student__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 66px 0 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .student__container {
+    padding-bottom: 90px;
+    gap: 49px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .student__container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__container {
+    padding: 60px 0 70px;
+  }
+}
+
+.student__image {
+  max-width: 270px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .student__image {
+    max-width: 255px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .student__image {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__image {
+    order: 1;
+    max-width: 100%;
+    width: 100%;
+    height: 352px;
+  }
+}
+
+.student__info {
+  margin: 0;
+  padding-bottom: 26px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .student__info {
+    font-size: 12px;
+    line-height: 18px;
+    padding-bottom: 20px;
+  }
+}
+
+.student__link {
+  text-decoration: none;
+  color:#000000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  width: fit-content;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.student__link:hover {
+  opacity: 0.7;
+}
+
+.student__main-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .student__main-info {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .student__main-info {
+    order: 2;
+  }
+}
+
+.student__name {
+  margin: 0;
+  padding-bottom: 18px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .student__name {
+    font-size: 40px;
+    line-height: 40px;
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 371px) {
+  .student__name {
+    font-size: 30px;
+    line-height: 36px;
+    padding-bottom: 20px;
+  }
+}
+
+.student__portfolio {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 320px) {
+  .student__portfolio {
+    font-size: 14px;
+  }
+}
+
+.student__portfolio-item {
+  list-style: none;
+  padding: 0;
+}
+
+.student__portfolio-item:not(:last-of-type) {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.student__portfolio-item:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+.student__portfolio-item:not(:last-of-type) {
+  padding-bottom: 19px;
+}
+
+.student__portfolio-item_part_link {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  display: flex;
+  justify-content: space-between;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.student__portfolio-item_part_link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .student__portfolio-item_part_link {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .student__portfolio-item_part_link {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.student__portfolio-item_part_text {
+  margin: 0;
+}
+
+.student__portfolio-list {
+  margin: 0;
+  padding: 50px 0 0;
+}
+
+@media screen and (max-width: 320px) {
+  .student__portfolio-list {
+    padding: 40px 0 0;
+  }
+}
+
+.student__title {
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: solid #000000 1px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 371px) {
+  .student__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

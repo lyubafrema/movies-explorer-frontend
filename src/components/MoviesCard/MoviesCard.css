@@ -1,0 +1,152 @@
+.card {
+  background-color: transparent;
+  position: relative;
+}
+
+.card:hover .card__save-button {
+  visibility: visible;
+}
+
+.card__duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 18px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 10px;
+  color: #A0A0A0;
+  margin: 0;
+  background-color: #F4F4F4;
+  border-radius: 3px;
+}
+
+.card__image {
+  border-radius: 6px;
+  max-width: 360px;
+}
+
+.card__image:hover + .card__save-button {
+  opacity: 1;
+}
+
+@media screen and (max-width: 890px) {
+  .card__image {
+    max-width: 339px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card__image {
+    max-width: 300px;
+  }
+}
+
+.card__image_saved {
+  border-radius: 6px;
+}
+
+.card__image_saved:hover ~ .card__unsave-button {
+  opacity: 1;
+}
+
+
+@media screen and (max-width: 890px) {
+  .card__image_saved {
+    max-width: 339px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card__image_saved {
+    max-width: 300px;
+  }
+}
+
+.card__save-button {
+  opacity: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 72px;
+  height: 21px;
+  border: none;
+  background-color: #F4F4F4;
+  border-radius: 30px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  transition: opacity .25s ease-in;
+  cursor: pointer;
+  padding: 0;
+}
+
+.card__save-button:hover {
+  opacity: 0.8;
+}
+
+.card__save-button_saved {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border-radius: 30px;
+  border: none;
+  width: 21px;
+  height: 21px;
+  background: #EE3465 url('../../images/saved-button-icon.svg') no-repeat center / 8px;
+}
+
+.card__text-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 14px 0;
+  align-items: center;
+  min-height: 18px;
+}
+
+@media screen and (max-width: 890px) {
+  .card__text-container {
+    padding: 25px 4px 0 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card__text-container {
+    padding: 16px 0 0;
+  }
+}
+
+.card__title {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  margin: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.card__unsave-button {
+  opacity: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border-radius: 30px;
+  border: none;
+  width: 21px;
+  height: 21px;
+  background: url('../../images/unsafe-btn-icon.svg') no-repeat center / 21px;
+  transition: opacity .25s ease-in;
+  cursor: pointer;
+  transition: opacity 0.15s ease-in;
+}
+
+.card__unsave-button:hover {
+  opacity: 0.8;
+}
