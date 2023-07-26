@@ -1,6 +1,6 @@
 # movies-explorer-frontend
 
-<!-- Ссылка на пул реквест, открытый из ветки level-3 в main -->
+Ссылка на пул реквест, открытый из ветки level-3 в main: https://github.com/lyubafrema/movies-explorer-frontend/pull/2
 
 Ссылка на деплой проекта на сервере: https://moviesbrowser.nomored.nomoredomains.work
 
