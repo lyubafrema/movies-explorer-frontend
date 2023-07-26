@@ -1,4 +1,4 @@
-.search-form {
+.search-form__main {
   background-color: #FAFAFA;
   padding-bottom: 40px;
   box-sizing: border-box;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 890px) {
-  .search-form {
+  .search-form__main {
     padding-bottom: 60px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .search-form {
+  .search-form__main {
     padding: 0 4px 50px;
   }
 }
@@ -108,4 +108,13 @@
   .search-form__input-container {
     padding-bottom: 9px;
   }
+}
+
+.search-form__error-text {
+  color: #FF004C;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  text-align: center;
+  margin-bottom: 20px;
 }

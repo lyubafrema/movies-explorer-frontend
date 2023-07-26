@@ -9,8 +9,8 @@
 
 .card__duration {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 52px;
   height: 18px;
   font-weight: 400;
@@ -25,21 +25,27 @@
 .card__image {
   border-radius: 6px;
   max-width: 360px;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 201px;
 }
 
-.card__image:hover + .card__save-button {
+.card__image-link:hover + .card__save-button {
   opacity: 1;
 }
 
 @media screen and (max-width: 890px) {
   .card__image {
     max-width: 339px;
+    height: 190px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .card__image {
     max-width: 300px;
+    height: 168px;
   }
 }
 
@@ -47,10 +53,9 @@
   border-radius: 6px;
 }
 
-.card__image_saved:hover ~ .card__unsave-button {
+.card__image-link_saved:hover + .card__unsave-button {
   opacity: 1;
 }
-
 
 @media screen and (max-width: 890px) {
   .card__image_saved {

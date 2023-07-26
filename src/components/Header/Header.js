@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import NavigationMain from "../NavigationMain/NavigationMain";
 import './Header.css';
 
-export default function Header() {
+export default function Header({ isLogged }) {
   const location = useLocation();
   const isLanding = location.pathname === '/';
   return (
@@ -13,7 +13,8 @@ export default function Header() {
         <Link className="header__logo-link" to="/" >
           <img className="header__logo" src={headerLogo} alt="Логотип: Синий квадрат с улыбкой." />
         </Link>
-        {isLanding ? <Navigation /> : <NavigationMain />}
+        {isLogged && <NavigationMain />}
+        {isLanding && <Navigation />}
       </div>
     </header>
   )

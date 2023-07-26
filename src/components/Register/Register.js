@@ -1,8 +1,22 @@
+import { useEffect } from 'react';
 import headerLogo from '../../images/logo.svg';
-import UserDataForm from "../UserDataForm/UserDataForm";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useValidationAndForm } from '../../hooks/useValidationAndForm';
 
-export default function Register() {
+export default function Register({ onRegister, isLogged, apiErr }) {
+  const navigate = useNavigate();
+  const { errors, isValid, resetForm, handleChange, values } = useValidationAndForm();
+
+  const handleSubmit = () => {
+    onRegister(values.email, values.password, values.name);
+  }
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/movies', { replace: true });
+    }
+  })
+
   return (
     <section className="login">
       <div className="login__wrap">
@@ -12,13 +26,79 @@ export default function Register() {
           </Link>
           <h1 className="login__title">Добро пожаловать!</h1>
         </div>
-        <UserDataForm
-          buttonText="Зарегистрироваться"
-          helpText="Уже зарегистрированы?"
-          linkText="Войти"
-          isRegister={true}
-          linkPath="/signin"
-        />
+        <form className="form" onSubmit={(e) => {
+          e.preventDefault();
+          resetForm();
+          handleSubmit();
+        }}>
+          <div className="form__container">
+            <label className="form__label" htmlFor="name-input">Имя</label>
+            <input
+              className="form__input"
+              type="text"
+              onChange={handleChange}
+              id="name-input"
+              name="name"
+              placeholder="Введите имя"
+              value={values.name || ''}
+              minLength="2"
+              maxLength="40"
+              required
+            />
+            <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
+              {errors.name}
+            </span>
+          </div>
+          <div className="form__container">
+            <label className="form__label" htmlFor="email-input">E-mail</label>
+            <input
+              className="form__input"
+              type="email"
+              onChange={handleChange}
+              id="email-input"
+              name="email"
+              placeholder="Введите email"
+              value={values.email || ''}
+              minLength="2"
+              maxLength="40"
+              required
+            />
+            <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
+              {errors.email}
+            </span>
+          </div>
+          <div className="form__container">
+            <label className="form__label" htmlFor="password-input">Пароль</label>
+            <input
+              className="form__input"
+              type="password"
+              onChange={handleChange}
+              id="password-input"
+              name="password"
+              placeholder="Введите пароль"
+              value={values.password || ''}
+              minLength="6"
+              maxLength="200"
+              required
+            />
+            <span className={`form__input-error ${isValid ? "form__input-error" : "form__input-error_active"}`}>
+              {errors.password}
+            </span>
+            <span className="form__api-error">
+              {apiErr.register.errorText}
+            </span>
+          </div>
+          <button
+            className="form__button form__button_place_register"
+            aria-label="Зарегистрироваться"
+            type="submit"
+            disabled={!isValid}
+          >Зарегистрироваться
+          </button>
+          <p className="form__text">Уже зарегистрированы?
+            <Link className="form__link" to="/signin">Войти</Link>
+          </p>
+        </form>
       </div>
     </section>
   )
