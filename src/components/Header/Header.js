@@ -13,8 +13,9 @@ export default function Header({ isLogged }) {
         <Link className="header__logo-link" to="/" >
           <img className="header__logo" src={headerLogo} alt="Логотип: Синий квадрат с улыбкой." />
         </Link>
-        {isLogged && <NavigationMain />}
-        {isLanding && <Navigation />}
+        {isLogged
+          ? <NavigationMain />
+          : <Navigation />}
       </div>
     </header>
   )
