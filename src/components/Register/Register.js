@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import headerLogo from '../../images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useValidationAndForm } from '../../hooks/useValidationAndForm';
+import { validateEmail, validateName } from '../../utils/validation';
 
 export default function Register({ onRegister, isLogged, apiErr }) {
   const navigate = useNavigate();
@@ -40,13 +41,13 @@ export default function Register({ onRegister, isLogged, apiErr }) {
               id="name-input"
               name="name"
               placeholder="Введите имя"
-              value={values.name || ''}
+              value={values.name || ""}
               minLength="2"
               maxLength="40"
               required
             />
-            <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
-              {errors.name}
+            <span className={`form__input-error form__input-error_active`}>
+              {validateName(values.name).message}
             </span>
           </div>
           <div className="form__container">
@@ -58,13 +59,13 @@ export default function Register({ onRegister, isLogged, apiErr }) {
               id="email-input"
               name="email"
               placeholder="Введите email"
-              value={values.email || ''}
+              value={values.email || ""}
               minLength="2"
               maxLength="40"
               required
             />
-            <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
-              {errors.email}
+            <span className={`form__input-error form__input-error_active`}>
+              {validateEmail(values.email).message}
             </span>
           </div>
           <div className="form__container">
@@ -76,7 +77,7 @@ export default function Register({ onRegister, isLogged, apiErr }) {
               id="password-input"
               name="password"
               placeholder="Введите пароль"
-              value={values.password || ''}
+              value={values.password || ""}
               minLength="6"
               maxLength="200"
               required
