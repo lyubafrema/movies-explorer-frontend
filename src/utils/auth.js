@@ -1,4 +1,4 @@
-import { mainUrl } from "./constants";
+import { MAIN_URL } from "./constants";
 
 const handleResponse = (res) => {
   if (res.ok) {
@@ -17,7 +17,7 @@ const handleResponse = (res) => {
 }
 
 export const register = (email, password, name) => {
-  return fetch(`${mainUrl}/signup`, {
+  return fetch(`${MAIN_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export const register = (email, password, name) => {
 }
 
 export const authorize = (email, password) => {
-  return fetch(`${mainUrl}/signin`, {
+  return fetch(`${MAIN_URL}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ export const authorize = (email, password) => {
 }
 
 export const getContent = (token) => {
-  return fetch(`${mainUrl}/users/me`, {
+  return fetch(`${MAIN_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

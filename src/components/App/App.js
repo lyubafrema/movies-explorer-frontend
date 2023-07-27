@@ -16,7 +16,7 @@ import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../utils/auth';
 import { moviesApi } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
-import { mainUrl } from '../../utils/constants';
+import { MAIN_URL, mainUrl } from '../../utils/constants';
 
 function App() {
   const location = useLocation();
@@ -32,7 +32,7 @@ function App() {
   const [isSubmitOk, setIsSubmitOk] = useState(true);
 
   const mainApi = new MainApi({
-    url: mainUrl,
+    url: MAIN_URL,
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('token')}`
