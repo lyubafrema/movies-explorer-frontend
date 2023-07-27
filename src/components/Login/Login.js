@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useValidationAndForm } from '../../hooks/useValidationAndForm';
 import { validateEmail } from '../../utils/validation';
 
-export default function Login({ onLogin, isLogged, apiErr }) {
+export default function Login({ onLogin, isLogged, apiErr, isSubmitOk, isLoading }) {
   const navigate = useNavigate();
   const { errors, isValid, resetForm, handleChange, values } = useValidationAndForm();
 
@@ -31,8 +31,10 @@ export default function Login({ onLogin, isLogged, apiErr }) {
         </div>
         <form className="form" onSubmit={(e) => {
           e.preventDefault();
-          resetForm();
           handleSubmit();
+          if (isSubmitOk) {
+            resetForm();
+          }
         }}>
           <div className="form__container">
             <label className="form__label" htmlFor="email-input">E-mail</label>
@@ -46,6 +48,7 @@ export default function Login({ onLogin, isLogged, apiErr }) {
               value={values.email || ""}
               minLength="2"
               maxLength="40"
+              disabled={isLoading}
               required
             />
             <span className={`form__input-error form__input-error_active`}>
@@ -64,6 +67,7 @@ export default function Login({ onLogin, isLogged, apiErr }) {
               value={values.password || ""}
               minLength="6"
               maxLength="200"
+              disabled={isLoading}
               required
             />
             <span className={`form__input-error ${isValid ? "form__input-error" : "form__input-error_active"}`}>
@@ -78,7 +82,7 @@ export default function Login({ onLogin, isLogged, apiErr }) {
             className="form__button"
             aria-label="Войти"
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || isLoading}
           >Войти
           </button>
           <p className="form__text">Еще не зарегистрированы?

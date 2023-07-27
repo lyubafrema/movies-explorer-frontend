@@ -29,6 +29,7 @@ function App() {
   const [isServerErr, setIsServerErr] = useState(false);
   const [isServerOk, setIsServerOk] = useState(false);
   const [apiErr, setApiErr] = useState({ register: {}, login: {}, profile: {}, movies: {} });
+  const [isSubmitOk, setIsSubmitOk] = useState(true);
 
   const mainApi = new MainApi({
     url: mainUrl,
@@ -126,6 +127,10 @@ function App() {
       .catch((err) => {
         console.log(err);
         setApiErr({ ...apiErr, login: err });
+        setIsSubmitOk(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -143,8 +148,11 @@ function App() {
       .catch((err) => {
         console.log(err);
         setApiErr({ ...apiErr, register: err });
+        setIsSubmitOk(false);
       })
-      .finally(() => setIsLoading(false))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   // фyнкция обновления данных профиля пользователя
@@ -164,8 +172,9 @@ function App() {
         setIsServerErr(true);
         console.log(err);
         setApiErr({ ...apiErr, profile: err });
+        setIsSubmitOk(false);
       })
-      .finally(() => setIsLoading(false))
+      .finally(() => setIsLoading(false));
   };
 
   // выход из аккаунта пользователя
@@ -200,9 +209,6 @@ function App() {
         );
         setSavedMovies(newListSavedMovies);
         if (savedMoviesArr) {
-          // const newListSavedSearchedMovies = savedMoviesArr.filter(
-          //   (m) => m._id !== movie._id
-          // );
           localStorage.setItem('searchedSavedMovies', JSON.stringify(newListSavedMovies));
         }
       })
@@ -248,18 +254,23 @@ function App() {
                 isServerOk={isServerOk}
                 setIsServerOk={setIsServerOk}
                 apiErr={apiErr}
+                isLoading={isLoading}
               />} />
               <Route path="/signin"
                 element={<Login
                   onLogin={onLogin}
                   isLogged={isLogged}
                   apiErr={apiErr}
+                  isSubmitOk={isSubmitOk}
+                  isLoading={isLoading}
                 />} />
               <Route path="/signup"
                 element={<Register
                   onRegister={onRegister}
                   isLogged={isLogged}
                   apiErr={apiErr}
+                  isSubmitOk={isSubmitOk}
+                  isLoading={isLoading}
                 />} />
               <Route path="*" element={<NotFound />} />
             </Routes>)}

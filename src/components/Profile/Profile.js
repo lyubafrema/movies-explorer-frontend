@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { useValidationAndForm } from "../../hooks/useValidationAndForm";
 
-export default function Profile({ onSignOut, onUpdateProfile, isServerErr, setIsServerErr, isServerOk, setIsServerOk, apiErr }) {
+export default function Profile({ onSignOut, onUpdateProfile, isServerErr, setIsServerErr, isServerOk, setIsServerOk, apiErr, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const [showSaveBtn, setShowSaveBtn] = useState(false);
   const { errors, isValid, handleChange, values, setValues } = useValidationAndForm();
@@ -45,7 +45,7 @@ export default function Profile({ onSignOut, onUpdateProfile, isServerErr, setIs
               minLength="2"
               maxLength="40"
               required
-              disabled={!showSaveBtn}
+              disabled={!showSaveBtn || isLoading}
             />
             <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
               {errors.name}
@@ -66,7 +66,7 @@ export default function Profile({ onSignOut, onUpdateProfile, isServerErr, setIs
               minLength="2"
               maxLength="40"
               required
-              disabled={!showSaveBtn}
+              disabled={!showSaveBtn || isLoading}
             />
             <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
               {errors.email}
@@ -95,7 +95,7 @@ export default function Profile({ onSignOut, onUpdateProfile, isServerErr, setIs
             "profile__navigation-btn_type_save profile__navigation-btn_show_not"
             : "profile__navigation-btn profile__navigation-btn_type_save"
           }
-          disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email) || isServerErr}
+          disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email) || isServerErr || isLoading}
           type="submit"
           aria-label="Сохранить"
           onClick={() => {
