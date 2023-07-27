@@ -1,6 +1,7 @@
 .cards-list {
   background-color: #FAFAFA;
   padding-top: 70px;
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -10,6 +11,7 @@
 }
 
 .cards-list__container {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 360px);
   column-gap: 30px;
