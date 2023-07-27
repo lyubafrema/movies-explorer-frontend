@@ -44,9 +44,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
 
   // ищем фильмы
   function filteredMovies(searchRequestData) {
-    if (!searchArrSaved.length) {
-      setIsLoading(true);
-    }
+    setIsLoading(true);
 
     setTimeout(() => {
       let searchedMoviesArr = [];
@@ -77,7 +75,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
         localStorage.setItem("filteredSavedMovies", JSON.stringify(searchedMoviesArr));
       }
       setIsLoading(false);
-    }, searchArrSaved.length ? 0 : 300);
+    }, 300);
   }
 
   return (

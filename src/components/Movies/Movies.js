@@ -30,9 +30,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
 
   // ищем фильмы
   function filteredMovies(searchRequestData) {
-    if (!searchArr.length) {
-      setIsLoading(true);
-    }
+    setIsLoading(true);
 
     setTimeout(() => {
       let searchedMoviesArr = [];
@@ -50,7 +48,6 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
             && i.duration <= 40
           );
         });
-        // console.log(searchedMoviesArr);
         setSearchArr(searchedMoviesArr);
         //что нашли - записываем в ls
         localStorage.setItem("filteredMovies", JSON.stringify(searchedMoviesArr));
@@ -62,7 +59,6 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
             i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase())
           );
         });
-        // console.log(searchedMoviesArr);
         setSearchArr(searchedMoviesArr);
         //что нашли - записываем в ls
         localStorage.setItem("filteredMovies", JSON.stringify(searchedMoviesArr));
@@ -70,7 +66,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
       } else setSearchArr(movies);
 
       setIsLoading(false);
-    }, searchArr.length ? 0 : 300);
+    }, 300);
   }
 
   // // cбрасываем значение инпута и историю поиска
