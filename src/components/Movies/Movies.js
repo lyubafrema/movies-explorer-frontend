@@ -50,7 +50,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
             && i.duration <= 40
           );
         });
-        console.log(searchedMoviesArr);
+        // console.log(searchedMoviesArr);
         setSearchArr(searchedMoviesArr);
         //что нашли - записываем в ls
         localStorage.setItem("filteredMovies", JSON.stringify(searchedMoviesArr));
@@ -62,7 +62,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
             i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase())
           );
         });
-        console.log(searchedMoviesArr);
+        // console.log(searchedMoviesArr);
         setSearchArr(searchedMoviesArr);
         //что нашли - записываем в ls
         localStorage.setItem("filteredMovies", JSON.stringify(searchedMoviesArr));

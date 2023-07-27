@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
+import { useLocation } from "react-router-dom";
 
 export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
   const [search, setSearch] = useState({});
@@ -13,6 +14,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const err = false;
+  const location = useLocation();
 
   // устанавливаем значение поиска фильмов
   useEffect(() => {
@@ -23,12 +25,12 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
     }
   }, [savedMovies, filterMovies, search]);
 
-  // устанавливаем значения чекбокса и поисковой строки, если они уже есть в ls
+  // устанавливаем значения чекбокса и поисковой строки
   useEffect(() => {
     if (searchRequest) {
-      setSearch(JSON.parse(searchRequest));
+      setSearch(JSON.parse(searchRequest))
     } else {
-      setSearch({ searchValue: "", ...searchRequest, });
+      setSearch({ searchValue: "", searchRequest });
     }
   }, [savedMovies, searchRequest]);
 
@@ -50,6 +52,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
       // поиск с фильтром - отбираем короткометражки - меньше 40 мин.
       if (searchRequestData.isShortMovieChecked) {
         searchedMoviesArr = savedMovies.filter((i) => {
+          console.log(searchRequestData);
           return (
             i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase()) && i.duration <= 40
           );
@@ -69,13 +72,19 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
     }, searchArrSaved.length ? 0 : 300);
   }
 
-  // // cбрасываем значение инпута и историю поиска
-  // const handleClearInput = () => {
-  //   setSearch({});
-  //   filteredMovies(movies);
-  //   localStorage.removeItem('filteredSavedMovies');
-  //   localStorage.removeItem('moviesSearchSavedRequest');
-  // };
+  // cбрасываем значение инпута и историю поиска
+  const handleClearInput = () => {
+    setSearchArrSaved(savedMovies);
+    setSearch({});
+    localStorage.removeItem("filteredSavedMovies");
+    localStorage.removeItem("moviesSearchSavedRequest")
+  };
+
+  // очищаем ls при переходе на другие страницы
+  useEffect(() => {
+    handleClearInput();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   return (
     <section className="movies">

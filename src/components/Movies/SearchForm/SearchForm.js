@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './SearchForm.css';
 
-export default function SearchForm({ search, onSearchMovies, apiErr }) {
+export default function SearchForm({ search, onSearchMovies }) {
   const [errText, setErrText] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const isShortCheck = JSON.parse(localStorage.getItem("shortMovieCheckBox"));
@@ -29,6 +29,7 @@ export default function SearchForm({ search, onSearchMovies, apiErr }) {
       setIsShortMovieChecked(!isShortMovieChecked);
       onSearchMovies({ searchValue: search.searchValue, isShortMovieChecked: !isShortMovieChecked });
     }
+    console.log(isShortMovieChecked);
   }
 
   // функция сабмита формы
@@ -38,6 +39,7 @@ export default function SearchForm({ search, onSearchMovies, apiErr }) {
       setErrText("Введите ключевое слово для поиска");
       return;
     } else {
+      console.log({ searchValue, isShortMovieChecked });
       onSearchMovies({ searchValue, isShortMovieChecked });
     }
   };
