@@ -1,4 +1,5 @@
 import useResize from "../../hooks/useResize";
+import { CARDS_QUANTITY_TO_ADD_DESKTOP, CARDS_QUANTITY_TO_ADD_TAB_MOBILE, DESKTOP_SCREEN_CARDS_QUANTITY, DESKTOP_SCREEN_WIDTH, MAX_MOBILE_SCREEN_WIDTH, MAX_TABLET_SCREEN_WIDTH, MOBILE_SCREEN_CARDS_QUANTITY, TABLET_SCREEN_CARDS_QUANTITY } from "../../utils/constants";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
 import { useEffect, useMemo, useState } from "react";
@@ -6,7 +7,6 @@ import { useEffect, useMemo, useState } from "react";
 export default function MoviesCardList({ movies, savedMovies, handleSaveMovie, handleUnsaveMovie }) {
   let size = useResize();
   const [countMoreMovies, setCountMoreMovies] = useState(0);
-  // const [initialMoviesList, setInitialMoviesList] = useState(0);
 
   useEffect(() => {
     setCountMoreMovies(0);
@@ -14,20 +14,19 @@ export default function MoviesCardList({ movies, savedMovies, handleSaveMovie, h
 
   const moviesOnButtonClick = useMemo(() => {
     const clickCounter =
-      size.width <= 480
-        ? 5
-        : size.width <= 768
-          ? 8
-          : 12;
-    // setInitialMoviesList(clickCounter);
+      size.width <= MAX_MOBILE_SCREEN_WIDTH
+        ? MOBILE_SCREEN_CARDS_QUANTITY
+        : size.width <= MAX_TABLET_SCREEN_WIDTH
+          ? TABLET_SCREEN_CARDS_QUANTITY
+          : DESKTOP_SCREEN_CARDS_QUANTITY;
     return movies.slice(0, clickCounter + countMoreMovies);
   }, [movies, countMoreMovies, size]);
 
   const showMoreCards = () => {
     let countAddMoreMovies;
-    if (size.width === 1280) {
-      countAddMoreMovies = 3;
-    } else countAddMoreMovies = 2;
+    if (size.width === DESKTOP_SCREEN_WIDTH) {
+      countAddMoreMovies = CARDS_QUANTITY_TO_ADD_DESKTOP;
+    } else countAddMoreMovies = CARDS_QUANTITY_TO_ADD_TAB_MOBILE;
 
     setCountMoreMovies((prev) => prev + countAddMoreMovies);
   }

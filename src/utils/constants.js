@@ -1,3 +1,12 @@
 export const moviesUrl = "https://api.nomoreparties.co/";
 export const mainUrl = "http://localhost:3100";
+export const SHORT_MOVIE_DURATION = 40;
+export const DESKTOP_SCREEN_WIDTH = 1280;
+export const MAX_TABLET_SCREEN_WIDTH = 768;
+export const MAX_MOBILE_SCREEN_WIDTH = 480;
+export const MOBILE_SCREEN_CARDS_QUANTITY = 5;
+export const TABLET_SCREEN_CARDS_QUANTITY = 8;
+export const DESKTOP_SCREEN_CARDS_QUANTITY = 12;
+export const CARDS_QUANTITY_TO_ADD_DESKTOP = 3;
+export const CARDS_QUANTITY_TO_ADD_TAB_MOBILE = 2;
 // export const mainUrl = "https://api.moviesbrowser.nomoredomains.rocks";

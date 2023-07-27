@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "./SearchForm/SearchForm";
+import { SHORT_MOVIE_DURATION } from "../../utils/constants";
 
 export default function Movies({ movies, savedMovies, handleSaveMovie, handleUnsaveMovie, apiErr }) {
   const [searchArr, setSearchArr] = useState([]);
@@ -45,7 +46,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
         searchedMoviesArr = movies.filter((i) => {
           return (
             i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase())
-            && i.duration <= 40
+            && i.duration <= SHORT_MOVIE_DURATION
           );
         });
         setSearchArr(searchedMoviesArr);

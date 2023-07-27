@@ -3,6 +3,7 @@ import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import { useLocation } from "react-router-dom";
+import { SHORT_MOVIE_DURATION } from "../../utils/constants";
 
 export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
   const [search, setSearch] = useState({});
@@ -60,7 +61,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
         searchedMoviesArr = savedMovies.filter((i) => {
           console.log(searchRequestData);
           return (
-            i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase()) && i.duration <= 40
+            i.nameRU.toLowerCase().trim().includes(searchRequestData.searchValue.toLowerCase()) && i.duration <= SHORT_MOVIE_DURATION
           );
         });
         setSearchArrSaved(searchedMoviesArr);
