@@ -112,6 +112,12 @@
   opacity: 0.8;
 }
 
+@media screen and (max-width: 480px) {
+  .card__save-button {
+    opacity: 1;
+  }
+}
+
 .card__save-button_saved {
   position: absolute;
   top: 14px;
@@ -175,4 +181,10 @@
 
 .card__unsave-button:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 480px) {
+  .card__unsave-button {
+    opacity: 1;
+  }
 }
