@@ -97,9 +97,8 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
               movies={searchArr}
               savedMovies={savedMovies}
               handleSaveMovie={handleSaveMovie}
-              handleUnsaveMovie={handleUnsaveMovie}
-            />)
-            : (<p className="movies__text">Ничего не найдено</p>)
+              handleUnsaveMovie={handleUnsaveMovie} />)
+            : (filterMovies && <p className="movies__text">Ничего не найдено</p>)
         }
       </div>
     </section>

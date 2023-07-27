@@ -12,6 +12,8 @@ export default function SearchForm({ search, onSearchMovies }) {
   useEffect(() => {
     if (search.searchValue) {
       setSearchValue(search.searchValue);
+    } else {
+      setSearchValue("");
     }
   }, [search.searchValue])
 
@@ -22,7 +24,7 @@ export default function SearchForm({ search, onSearchMovies }) {
 
   // функция чекбокса короткометражек
   const checkShortMovie = () => {
-    if (searchValue !== '') {
+    if (searchValue !== "") {
       setIsShortMovieChecked(!isShortMovieChecked);
       onSearchMovies({ searchValue: searchValue, isShortMovieChecked: !isShortMovieChecked });
     } else {
@@ -39,7 +41,6 @@ export default function SearchForm({ search, onSearchMovies }) {
       setErrText("Введите ключевое слово для поиска");
       return;
     } else {
-      console.log({ searchValue, isShortMovieChecked });
       onSearchMovies({ searchValue, isShortMovieChecked });
     }
   };

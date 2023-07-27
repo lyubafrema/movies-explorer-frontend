@@ -16,6 +16,14 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
   const err = false;
   const location = useLocation();
 
+  // cбрасываем значение инпута и историю поиска
+  useEffect(() => {
+    setSearchArrSaved(savedMovies);
+    setSearch({});
+    localStorage.removeItem("filteredSavedMovies");
+    localStorage.removeItem("moviesSearchSavedRequest")
+  }, [savedMovies, location]);
+
   // устанавливаем значение поиска фильмов
   useEffect(() => {
     if (filterMovies) {
@@ -30,7 +38,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
     if (searchRequest) {
       setSearch(JSON.parse(searchRequest))
     } else {
-      setSearch({ searchValue: "", searchRequest });
+      setSearch({ ...searchRequest, searchValue: "" });
     }
   }, [savedMovies, searchRequest]);
 
@@ -71,20 +79,6 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
       setIsLoading(false);
     }, searchArrSaved.length ? 0 : 300);
   }
-
-  // cбрасываем значение инпута и историю поиска
-  const handleClearInput = () => {
-    setSearchArrSaved(savedMovies);
-    setSearch({});
-    localStorage.removeItem("filteredSavedMovies");
-    localStorage.removeItem("moviesSearchSavedRequest")
-  };
-
-  // очищаем ls при переходе на другие страницы
-  useEffect(() => {
-    handleClearInput();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
 
   return (
     <section className="movies">

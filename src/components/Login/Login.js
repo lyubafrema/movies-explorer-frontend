@@ -3,6 +3,7 @@ import headerLogo from '../../images/logo.svg';
 import './Login.css';
 import { useEffect } from 'react';
 import { useValidationAndForm } from '../../hooks/useValidationAndForm';
+import { validateEmail } from '../../utils/validation';
 
 export default function Login({ onLogin, isLogged, apiErr }) {
   const navigate = useNavigate();
@@ -42,13 +43,13 @@ export default function Login({ onLogin, isLogged, apiErr }) {
               id="email-input"
               name="email"
               placeholder="Введите email"
-              value={values.email || ''}
+              value={values.email || ""}
               minLength="2"
               maxLength="40"
               required
             />
-            <span className={`form__input-error ${isValid ? "" : "form__input-error_active"}`}>
-              {errors.email}
+            <span className={`form__input-error form__input-error_active`}>
+              {validateEmail(values.email).message}
             </span>
           </div>
           <div className="form__container">
@@ -60,7 +61,7 @@ export default function Login({ onLogin, isLogged, apiErr }) {
               id="password-input"
               name="password"
               placeholder="Введите пароль"
-              value={values.password || ''}
+              value={values.password || ""}
               minLength="6"
               maxLength="200"
               required
