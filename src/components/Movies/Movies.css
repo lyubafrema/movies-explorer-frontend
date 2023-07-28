@@ -20,3 +20,20 @@
     padding: 80px 10px;
   }
 }
+
+.movies__api-error {
+  color: #FF004C;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movies__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13.31px;
+  text-align: center;
+  margin-bottom: 20px;
+}

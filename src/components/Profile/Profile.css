@@ -67,6 +67,13 @@
   }
 }
 
+.profile__input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
 .profile__input {
   width: 80%;
   border: none;
@@ -95,6 +102,7 @@
   color: #000000;
   display: flex;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .profile__label:not(:last-of-type) {
@@ -144,6 +152,27 @@
 
 .profile__navigation-btn_color_red {
   color: #EE3465;
+  text-align: center;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.profile__navigation-btn_show_not {
+  display: none;
+}
+
+.profile__navigation-btn_type_save {
+  width: 410px;
+  height: 45px;
+  background-color: #3456F3;
+  color: #FFFFFF;
+  border-radius: 3px;
+}
+
+.profile__navigation-btn_type_save:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: default;
 }
 
 .profile__title {
@@ -152,4 +181,31 @@
   line-height: 29px;
   text-align: center;
   margin: 0;
+}
+
+.profile__success-server {
+  display: none;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile__success-server_active {
+  display: block;
+}
+
+.profile__error-server {
+  display: none;
+  color: #FF004C;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile__error-server_active {
+  display: block;
 }

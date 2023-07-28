@@ -32,6 +32,12 @@
   }
 }
 
+.form__button:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: default;
+}
+
 .form__button_place_register {
   margin: 69px 0 16px;
 }
@@ -42,14 +48,16 @@
   }
 }
 
+.form__button_place_register:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: default;
+}
+
 .form__container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.form__container_show_not {
-  display: none;
 }
 
 .form__input {
@@ -88,6 +96,14 @@
 
 .form__input-error_active {
   visibility: visible;
+}
+
+.form__api-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  min-height: 12px;
 }
 
 .form__label {
