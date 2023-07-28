@@ -1,6 +1,6 @@
 export const MOVIES_URL = "https://api.nomoreparties.co/";
-// export const MAIN_URL = "https://api.moviesbrowser.nomoredomains.rocks";
-export const MAIN_URL = "http://localhost:3100";
+export const MAIN_URL = "https://api.moviesbrowser.nomoredomains.rocks";
+// export const MAIN_URL = "http://localhost:3100";
 export const SHORT_MOVIE_DURATION = 40;
 export const DESKTOP_SCREEN_WIDTH = 1280;
 export const MAX_TABLET_SCREEN_WIDTH = 768;
