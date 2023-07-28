@@ -4,9 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useValidationAndForm } from '../../hooks/useValidationAndForm';
 import { validateEmail, validateName } from '../../utils/validation';
 
-export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isLoading }) {
+export default function Register({ onRegister, isLogged, apiErr, isFormLoading }) {
   const navigate = useNavigate();
-  const { errors, isValid, resetForm, handleChange, values } = useValidationAndForm();
+  const { errors, isValid, handleChange, values } = useValidationAndForm();
 
   const handleSubmit = () => {
     onRegister(values.email, values.password, values.name);
@@ -14,7 +14,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
 
   useEffect(() => {
     if (isLogged) {
-      navigate('/movies', { replace: true });
+      navigate('/movies');
     }
   })
 
@@ -30,9 +30,6 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
         <form className="form" onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
-          if (isSubmitOk) {
-            resetForm();
-          }
         }}>
           <div className="form__container">
             <label className="form__label" htmlFor="name-input">Имя</label>
@@ -46,7 +43,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
               value={values.name || ""}
               minLength="2"
               maxLength="40"
-              disabled={isLoading}
+              disabled={isFormLoading}
               required
             />
             <span className={`form__input-error form__input-error_active`}>
@@ -65,7 +62,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
               value={values.email || ""}
               minLength="2"
               maxLength="40"
-              disabled={isLoading}
+              disabled={isFormLoading}
               required
             />
             <span className={`form__input-error form__input-error_active`}>
@@ -84,7 +81,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
               value={values.password || ""}
               minLength="6"
               maxLength="200"
-              disabled={isLoading}
+              disabled={isFormLoading}
               required
             />
             <span className={`form__input-error ${isValid ? "form__input-error" : "form__input-error_active"}`}>
@@ -98,7 +95,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
             className="form__button form__button_place_register"
             aria-label="Зарегистрироваться"
             type="submit"
-            disabled={!isValid || isLoading || validateName(values.name).message || validateEmail(values.email).message}
+            disabled={!isValid || isFormLoading || validateName(values.name).invalid || validateEmail(values.email).invalid}
           >Зарегистрироваться
           </button>
           <p className="form__text">Уже зарегистрированы?

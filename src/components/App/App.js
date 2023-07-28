@@ -24,11 +24,11 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFormLoading, setIsFormLoading] = useState(false);
   const [isServerErr, setIsServerErr] = useState(false);
   const [isServerOk, setIsServerOk] = useState(false);
   const [apiErr, setApiErr] = useState({ register: {}, login: {}, profile: {}, movies: {} });
-  const [isSubmitOk, setIsSubmitOk] = useState(true);
 
   const mainApi = new MainApi({
     url: MAIN_URL,
@@ -45,7 +45,6 @@ function App() {
 
   // проверяем есть ли токен в локал сторейдж, если да - авторизуем
   useEffect(() => {
-    setIsLoading(true);
     const token = localStorage.getItem('token');
     if (token) {
       auth.getContent(token)
@@ -63,7 +62,6 @@ function App() {
           }
           console.log(err);
         })
-        .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
     }
@@ -123,6 +121,7 @@ function App() {
 
   // функция авторизации
   const onLogin = (email, password) => {
+    setIsFormLoading(true);
     auth.authorize(email, password)
       .then((res) => {
         if (!res) {
@@ -137,15 +136,13 @@ function App() {
       .catch((err) => {
         console.log(err);
         setApiErr({ ...apiErr, login: err });
-        setIsSubmitOk(false);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsFormLoading(false));
   }
 
   // функция регистрации
   const onRegister = (email, password, name) => {
+    setIsFormLoading(true);
     auth.register(email, password, name)
       .then((res) => {
         if (!res) {
@@ -158,11 +155,8 @@ function App() {
       .catch((err) => {
         console.log(err);
         setApiErr({ ...apiErr, register: err });
-        setIsSubmitOk(false);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsFormLoading(false));
   }
 
   // фyнкция обновления данных профиля пользователя
@@ -182,9 +176,7 @@ function App() {
         setIsServerErr(true);
         console.log(err);
         setApiErr({ ...apiErr, profile: err });
-        setIsSubmitOk(false);
       })
-      .finally(() => setIsLoading(false));
   };
 
   // выход из аккаунта пользователя
@@ -271,16 +263,14 @@ function App() {
                     onLogin={onLogin}
                     isLogged={isLogged}
                     apiErr={apiErr}
-                    isSubmitOk={isSubmitOk}
-                    isLoading={isLoading}
+                    isFormLoading={isFormLoading}
                   />} />
                 <Route path="/signup"
                   element={<Register
                     onRegister={onRegister}
                     isLogged={isLogged}
                     apiErr={apiErr}
-                    isSubmitOk={isSubmitOk}
-                    isLoading={isLoading}
+                    isFormLoading={isFormLoading}
                   />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
