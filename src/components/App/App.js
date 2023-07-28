@@ -6,7 +6,6 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
-import '../../index.css';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import NotFound from '../NotFound/NotFound';
@@ -53,33 +52,44 @@ function App() {
         .then((res) => {
           if (res) {
             setIsLogged(true);
+            navigate(location.pathname);
+            setIsLoading(false);
           }
         })
         .catch((err) => {
           if (err.status === 401) {
             localStorage.removeItem('token');
+            setIsLoading(false);
           }
           console.log(err);
         })
-        .finally(() => setIsLoading(false))
+        .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // получаем информацию о пользователе и фильмы из нашего api
+  // получаем информацию о пользователе из нашего api
   useEffect(() => {
     isLogged &&
-      Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
-        .then(([user, movies]) => {
+      mainApi.getUserInfo()
+        .then((user) => {
           setCurrentUser(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+    isLogged &&
+      mainApi.getSavedMovies()
+        .then((movies) => {
           setSavedMovies(movies);
           localStorage.setItem('savedMovies', JSON.stringify(movies));
         })
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => setIsLoading(false))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogged])
 
@@ -99,11 +109,11 @@ function App() {
           .catch((err) => {
             console.log(err);
             setApiErr({ ...apiErr, movies: err });
-          })
-          .finally(() => setIsLoading(false))
+          });
       }
     }
-  }, [isLogged, apiErr]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLogged]);
 
   // при логине сохраняем полученные фильмы в ls
   useEffect(() => {
@@ -121,7 +131,7 @@ function App() {
         if (res.token) {
           setIsLogged(true);
           localStorage.setItem('token', res.token);
-          navigate('/movies', { replace: true });
+          navigate('/movies');
         }
       })
       .catch((err) => {
@@ -216,68 +226,69 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className='page'>
-        {(location.pathname === "/" || "/movies" || "/saved-movies" || "/profile") && <Header isLogged={isLogged} />}
-        <main className='main'>
-          {isLoading
-            ? (<Preloader />)
-            :
-            (<Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/movies" element={<ProtectedRouteElement
-                element={Movies}
-                isLogged={isLogged}
-                movies={movies}
-                savedMovies={savedMovies}
-                handleSaveMovie={handleSaveMovie}
-                handleUnsaveMovie={handleUnsaveMovie}
-                apiErr={apiErr}
-              />}
-              />
-              <Route path="/saved-movies"
-                element={<ProtectedRouteElement
-                  element={SavedMovies}
+    <div className="page">
+      {isLoading
+        ? <Preloader />
+        : (
+          <CurrentUserContext.Provider value={currentUser} >
+            {(location.pathname === "/" || "/movies" || "/saved-movies" || "/profile") && <Header isLogged={isLogged} />}
+            <main className='main'>
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/movies" element={<ProtectedRouteElement
+                  element={Movies}
                   isLogged={isLogged}
+                  movies={movies}
                   savedMovies={savedMovies}
-                  handleUnsaveMovie={handleUnsaveMovie}
                   handleSaveMovie={handleSaveMovie}
+                  handleUnsaveMovie={handleUnsaveMovie}
+                  apiErr={apiErr}
                 />}
-              />
-              <Route path="/profile" element={<ProtectedRouteElement
-                element={Profile}
-                isLogged={isLogged}
-                onSignOut={onSignOut}
-                onUpdateProfile={handleUpdateProfileInfo}
-                isServerErr={isServerErr}
-                setIsServerErr={setIsServerErr}
-                isServerOk={isServerOk}
-                setIsServerOk={setIsServerOk}
-                apiErr={apiErr}
-                isLoading={isLoading}
-              />} />
-              <Route path="/signin"
-                element={<Login
-                  onLogin={onLogin}
+                />
+                <Route path="/saved-movies"
+                  element={<ProtectedRouteElement
+                    element={SavedMovies}
+                    isLogged={isLogged}
+                    savedMovies={savedMovies}
+                    handleUnsaveMovie={handleUnsaveMovie}
+                    handleSaveMovie={handleSaveMovie}
+                  />}
+                />
+                <Route path="/profile" element={<ProtectedRouteElement
+                  element={Profile}
                   isLogged={isLogged}
+                  onSignOut={onSignOut}
+                  onUpdateProfile={handleUpdateProfileInfo}
+                  isServerErr={isServerErr}
+                  setIsServerErr={setIsServerErr}
+                  isServerOk={isServerOk}
+                  setIsServerOk={setIsServerOk}
                   apiErr={apiErr}
-                  isSubmitOk={isSubmitOk}
                   isLoading={isLoading}
                 />} />
-              <Route path="/signup"
-                element={<Register
-                  onRegister={onRegister}
-                  isLogged={isLogged}
-                  apiErr={apiErr}
-                  isSubmitOk={isSubmitOk}
-                  isLoading={isLoading}
-                />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>)}
-        </main>
-        {(location.pathname === "/" || "/movies" || "/saved-movies") && <Footer />}
-      </div>
-    </CurrentUserContext.Provider>
+                <Route path="/signin"
+                  element={<Login
+                    onLogin={onLogin}
+                    isLogged={isLogged}
+                    apiErr={apiErr}
+                    isSubmitOk={isSubmitOk}
+                    isLoading={isLoading}
+                  />} />
+                <Route path="/signup"
+                  element={<Register
+                    onRegister={onRegister}
+                    isLogged={isLogged}
+                    apiErr={apiErr}
+                    isSubmitOk={isSubmitOk}
+                    isLoading={isLoading}
+                  />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            {(location.pathname === "/" || "/movies" || "/saved-movies") && <Footer />}
+          </CurrentUserContext.Provider>
+        )}
+    </div>
   );
 }
 
