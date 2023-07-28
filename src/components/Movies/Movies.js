@@ -16,9 +16,13 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
 
   // устанавливаем значение поиска фильмов, если оно уже есть в ls
   useEffect(() => {
-    if (filterMovies) {
-      setSearchArr(JSON.parse(filterMovies));
-    }
+    setIsLoading(true);
+    setTimeout(() => {
+      if (filterMovies) {
+        setSearchArr(JSON.parse(filterMovies));
+      }
+      setIsLoading(false);
+    }, 1000);
   }, [filterMovies]);
 
   // устанавливаем значения чекбокса и поисковой строки, если они уже есть в ls
@@ -67,7 +71,7 @@ export default function Movies({ movies, savedMovies, handleSaveMovie, handleUns
       } else setSearchArr(movies);
 
       setIsLoading(false);
-    }, 300);
+    }, 1000);
   }
 
   // // cбрасываем значение инпута и историю поиска

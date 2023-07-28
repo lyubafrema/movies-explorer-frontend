@@ -27,11 +27,15 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
 
   // устанавливаем значение поиска фильмов
   useEffect(() => {
-    if (filterMovies) {
-      setSearchArrSaved(JSON.parse(filterMovies));
-    } else {
-      setSearchArrSaved(savedMovies);
-    }
+    setIsLoading(true);
+    setTimeout(() => {
+      if (filterMovies) {
+        setSearchArrSaved(JSON.parse(filterMovies));
+      } else {
+        setSearchArrSaved(savedMovies);
+      }
+      setIsLoading(false);
+    }, 1000);
   }, [savedMovies, filterMovies, search]);
 
   // устанавливаем значения чекбокса и поисковой строки
@@ -76,7 +80,7 @@ export default function SavedMovies({ savedMovies, handleUnsaveMovie }) {
         localStorage.setItem("filteredSavedMovies", JSON.stringify(searchedMoviesArr));
       }
       setIsLoading(false);
-    }, 300);
+    }, 1000);
   }
 
   return (
