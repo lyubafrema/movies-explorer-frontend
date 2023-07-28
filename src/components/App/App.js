@@ -16,7 +16,7 @@ import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../utils/auth';
 import { moviesApi } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
-import { MAIN_URL, mainUrl } from '../../utils/constants';
+import { MAIN_URL } from '../../utils/constants';
 
 function App() {
   const location = useLocation();

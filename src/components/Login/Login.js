@@ -82,7 +82,7 @@ export default function Login({ onLogin, isLogged, apiErr, isSubmitOk, isLoading
             className="form__button"
             aria-label="Войти"
             type="submit"
-            disabled={!isValid || isLoading}
+            disabled={!isValid || isLoading || validateEmail(values.email).message}
           >Войти
           </button>
           <p className="form__text">Еще не зарегистрированы?

@@ -98,7 +98,7 @@ export default function Register({ onRegister, isLogged, apiErr, isSubmitOk, isL
             className="form__button form__button_place_register"
             aria-label="Зарегистрироваться"
             type="submit"
-            disabled={!isValid || isLoading}
+            disabled={!isValid || isLoading || validateName(values.name).message || validateEmail(values.email).message}
           >Зарегистрироваться
           </button>
           <p className="form__text">Уже зарегистрированы?
