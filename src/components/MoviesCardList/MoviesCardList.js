@@ -24,7 +24,7 @@ export default function MoviesCardList({ movies, savedMovies, handleSaveMovie, h
 
   const showMoreCards = () => {
     let countAddMoreMovies;
-    if (size.width === DESKTOP_SCREEN_WIDTH) {
+    if (size.width >= DESKTOP_SCREEN_WIDTH) {
       countAddMoreMovies = CARDS_QUANTITY_TO_ADD_DESKTOP;
     } else countAddMoreMovies = CARDS_QUANTITY_TO_ADD_TAB_MOBILE;
 
